@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.carsagency.catalogs.CarsController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <left>
+        <GridPane vgap="15" hgap="10" alignment="CENTER">
+            <Text text="Cars List" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"
+                  GridPane.halignment="CENTER"/>
+
+
+            <Label text="Year" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <Label text="Model" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <Label text="Color" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <Label text="Price" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <Label text="Mileage" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+            <Label text="Doors" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+            <Label text="Brand" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+            <Label text="Brakes" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+            <Label text="Transmission" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+            <Label text="Engine" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
+
+            <TextField fx:id="tfYear" promptText="Type car's Year" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <TextField fx:id="tfModel" promptText="Type car's Model" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+            <TextField fx:id="tfColor" promptText="Type car's Color" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            <TextField fx:id="tfPrice" promptText="Type car's Price" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+            <TextField fx:id="tfMileage" promptText="Type car's Mileage" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+            <TextField fx:id="tfDoor" promptText="Type car's total Doors" GridPane.columnIndex="1"
+                       GridPane.rowIndex="6"/>
+
+            <ComboBox fx:id="cbBrand" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+            <ComboBox fx:id="cbBrakes" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+            <ComboBox fx:id="cbTransmission" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+            <ComboBox fx:id="cbEngine" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+
+            <HBox GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.columnSpan="2" spacing="10"
+                  alignment="BASELINE_RIGHT">
+                <Button fx:id="btnReset" text="Reset"/>
+                <Button fx:id="btnSave" text="Save"/>
+            </HBox>
+        </GridPane>
+    </left>
+
+    <center>
+        <TableView fx:id="tblCars">
+            <columns>
+                <TableColumn text="Model">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="model"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Brand">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="brand"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Year">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="year"/>
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+    </center>
+
+    <right>
+        <GridPane>
+            <Label text="ID: " GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <Label text="BRAND: " GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <Label text="MODEL: " GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <Label text="PRICE: " GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <Label text="MILEAGE: " GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <Label text="DOORS: " GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+            <Label text="BREAKS: " GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+            <Label text="TRANSMISSION: " GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+            <Label text="ENGINE: " GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+            <Label text="Year: " GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+            <Text fx:id="txtCarDetailId" text="" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+            <Text fx:id="txtCarDetailBrand" text="" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <Text fx:id="txtCarDetailModel" text="" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+            <Text fx:id="txtCarDetailPrice" text="" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            <Text fx:id="txtCarDetailMileage" text="" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+            <Text fx:id="txtCarDetailDoors" text="" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+            <Text fx:id="txtCarDetailBreaks" text="" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+            <Text fx:id="txtCarDetailTransmission" text="" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+            <Text fx:id="txtCarDetailEngine" text="" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+            <Text fx:id="txtCarDetailYear" text="" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+            <ImageView fx:id="imgCarDetail" GridPane.columnIndex="0" GridPane.rowIndex="10" GridPane.columnSpan="2"/>
+
+            <HBox GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.columnSpan="2" spacing="10"
+                  alignment="BASELINE_RIGHT">
+                <Button fx:id="btnEdit" text="Edit"/>
+                <Button fx:id="btnDelete" text="Reset"/>
+            </HBox>
+        </GridPane>
+    </right>
+
+</BorderPane>

@@ -1,0 +1,175 @@
+package com.example.carsagency.models;
+
+import com.example.carsagency.enums.BrakesType;
+import com.example.carsagency.enums.TransmissionType;
+
+public class Car {
+    private int id;
+    private int year;
+    private String model;
+    private String color;
+    private double price;
+    private int mileage;
+    private int doors;
+   /* private Brand brand;
+    private BrakesType brakesType;
+    private TransmissionType transmissionType;
+    private Engine engine;*/
+    private String image;
+
+    private int brand;
+    private int brakesType;
+    private int transmissionType;
+    private int engine;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Car() {
+    }
+
+    public Car(int id, int year, String model, String color, double price, int mileage, int doors, int brand, int brakesType, int transmissionType, int engine, /*Brand brand, BrakesType brakesType, TransmissionType transmissionType, Engine engine, */String image) {
+        this.id = id;
+        this.year = year;
+        this.model = model;
+        this.color = color;
+        this.price = price;
+        this.mileage = mileage;
+        this.doors = doors;
+        this.brand = brand;
+        this.brakesType = brakesType;
+        this.transmissionType = transmissionType;
+        this.engine = engine;
+        this.image = image;
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getMileage() {
+        return mileage;
+    }
+
+    public void setMileage(int mileage) {
+        this.mileage = mileage;
+    }
+
+    public int getDoors() {
+        return doors;
+    }
+
+    public void setDoors(int doors) {
+        this.doors = doors;
+    }
+
+    public int getBrand() {
+        return brand;
+    }
+
+    public void setBrand(int brand) {
+        this.brand = brand;
+    }
+
+    public int getBrakesType() {
+        return brakesType;
+    }
+
+    public void setBrakesType(int brakesType) {
+        this.brakesType = brakesType;
+    }
+
+    public int getTransmissionType() {
+        return transmissionType;
+    }
+
+    public void setTransmissionType(int transmissionType) {
+        this.transmissionType = transmissionType;
+    }
+
+    public int getEngine() {
+        return engine;
+    }
+
+    public void setEngine(int engine) {
+        this.engine = engine;
+    }
+
+    /*
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
+    public BrakesType getBrakesType() {
+        return brakesType;
+    }
+
+    public void setBrakesType(BrakesType brakesType) {
+        this.brakesType = brakesType;
+    }
+
+    public TransmissionType getTransmissionType() {
+        return transmissionType;
+    }
+
+    public void setTransmissionType(TransmissionType transmissionType) {
+        this.transmissionType = transmissionType;
+    }
+
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+
+
+     */
+}
