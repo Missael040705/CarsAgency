@@ -1,8 +1,12 @@
 package com.example.carsagency.catalogs;
 
 import com.example.carsagency.CarsAgencyApplication;
+import com.example.carsagency.database.BrandDao;
+import com.example.carsagency.database.CarDao;
 import com.example.carsagency.database.MySQLConnection;
+import com.example.carsagency.enums.BrakesType;
 import com.example.carsagency.models.Car;
+import com.example.carsagency.models.Engine;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -28,7 +32,10 @@ public class CarsController implements Initializable {
     public TextField tfYear;
     private List<Car> carList = new ArrayList<>();
     private ObservableList<Car> carOB = FXCollections.observableArrayList();
-    /* private CarDao carDao = new CarDao;*/
+
+    private CarDao carDao=new CarDao();
+    private BrandDao brandDao=new BrandDao();
+    private Engine engineDao=new Engine();
 
     @FXML
     TableView<Car> tblCars;
@@ -63,117 +70,32 @@ public class CarsController implements Initializable {
     }
 
     private void initCars() {
-        /*Brand brand1 = new Brand(1, "Hyundai");
-        Brand brand2 = new Brand(2, "Tesla");
-        Engine engine1 = new Engine(1, "Diesel", "V");
-        Engine engine2 = new Engine(2, "Electric", "V");
-        carList.add(new Car(1, 2020, "Sante Fe", "Gray", 50000, 5000, 5, brand1, BrakesType.DISC, TransmissionType.AUTOMATIC, engine1, "hyundai_tucson.JPG"));
-        carList.add(new Car(2, 2020, "Y", "Gray", 1500000, 9000, 4, brand2, BrakesType.DISC, TransmissionType.AUTOMATIC, engine2, "tesla_modelY.JPG"));
 
-        //CHATGPT
-        Brand bmw = new Brand(1, "BMW");
-        Brand byd = new Brand(2, "BYD");
-        Brand dodge = new Brand(3, "Dodge");
-        Brand ford = new Brand(4, "Ford");
-        Brand gmc = new Brand(5, "GMC");
-        Brand kia = new Brand(6, "KIA");
-        Brand lucid = new Brand(7, "Lucid Motors");
-        Brand mercedes = new Brand(8, "Mercedes");
-        Brand nissan = new Brand(9, "Nissan");
-        Brand volvo = new Brand(10, "Volvo");
-        Brand porsche = new Brand(11, "Porsche");
-        Brand subaru = new Brand(12, "Subaru");
-        Brand tesla = new Brand(13, "Tesla");
-        Brand toyota = new Brand(14, "Toyota");
-        Brand zeekr = new Brand(15, "Zeekr");
-
-        // Inicializar Engines
-        Engine electricV = new Engine(1, "Electric", "V");
-        Engine hybridInline = new Engine(2, "Hybrid", "Inline");
-        Engine gasolineV6 = new Engine(3, "Gasoline", "V6");
-        Engine gasolineV8 = new Engine(4, "Gasoline", "V8");
-        Engine dieselInline = new Engine(5, "Diesel", "Inline");
-
-        // Agregar autos a la lista
-        carList.add(new Car(1, 2024, "BMW i5", "Blue", 65000, 0, 4, bmw, BrakesType.DISC, TransmissionType.AUTOMATIC, electricV, "bmw_i5.JPG"));
-        carList.add(new Car(2, 2024, "BYD Song Pro", "Red", 35000, 0, 4, byd, BrakesType.DRLMS, TransmissionType.AUTOMATIC, hybridInline, "BYD_songpro.JPG"));
-        carList.add(new Car(3, 2024, "Dodge Attitude", "White", 20000, 0, 4, dodge, BrakesType.HYDRAULIC, TransmissionType.MANUAL, gasolineV6, "dodge_attitude.JPG"));
-        carList.add(new Car(4, 2024, "Ford Bronco", "Black", 50000, 0, 4, ford, BrakesType.DISC, TransmissionType.AUTOMATIC, gasolineV8, "ford_bronco.JPG"));
-        carList.add(new Car(5, 2024, "GMC Hummer EV", "Silver", 110000, 0, 4, gmc, BrakesType.DISC, TransmissionType.AUTOMATIC, electricV, "GMC_hummerEV.JPG"));
-        carList.add(new Car(6, 2024, "KIA EV6", "Gray", 45000, 0, 4, kia, BrakesType.DISC, TransmissionType.AUTOMATIC, electricV, "kia_ev6.JPG"));
-        carList.add(new Car(7, 2024, "KIA K3", "Blue", 25000, 0, 4, kia, BrakesType.HYDRAULIC, TransmissionType.MANUAL, gasolineV6, "kia_K3.JPG"));
-        carList.add(new Car(8, 2024, "Lucid Motors Lucid Air", "Black", 87000, 0, 4, lucid, BrakesType.DISC, TransmissionType.AUTOMATIC, electricV, "lucidMotors_lucidAir.JPG"));
-        carList.add(new Car(9, 2024, "Mercedes EQS", "White", 120000, 0, 4, mercedes, BrakesType.DISC, TransmissionType.AUTOMATIC, electricV, "mercedes_eqs.JPG"));
-        carList.add(new Car(10, 2024, "Nissan Sentra 24", "Gray", 25000, 0, 4, nissan, BrakesType.HYDRAULIC, TransmissionType.MANUAL, gasolineV6, "nissan_sentra24.JPG"));
-        carList.add(new Car(11, 2024, "Polestar Volvo", "Silver", 55000, 0, 4, volvo, BrakesType.DRLMS, TransmissionType.AUTOMATIC, electricV, "polestar_volvo.JPG"));
-        carList.add(new Car(12, 2024, "Porsche 911 Dakar", "Green", 180000, 0, 2, porsche, BrakesType.DISC, TransmissionType.AUTOMATIC, gasolineV8, "porsche_911dakar.JPG"));
-        carList.add(new Car(13, 2024, "Subaru Forester", "Blue", 35000, 0, 4, subaru, BrakesType.DISC, TransmissionType.AUTOMATIC, gasolineV6, "subaru_forester.JPG"));
-        carList.add(new Car(14, 2024, "Subaru Forester Compact", "White", 32000, 0, 4, subaru, BrakesType.HYDRAULIC, TransmissionType.MANUAL, gasolineV6, "subaru_foresterCMP.JPG"));
-        carList.add(new Car(15, 2024, "Tesla Model Y", "Red", 50000, 0, 4, tesla, BrakesType.DISC, TransmissionType.AUTOMATIC, electricV, "tesla_modelY.JPG"));
-        carList.add(new Car(16, 2024, "Toyota Camry", "Black", 28000, 0, 4, toyota, BrakesType.HYDRAULIC, TransmissionType.MANUAL, gasolineV6, "toyota_camry.JPG"));
-        carList.add(new Car(17, 2024, "Toyota Camry Hybrid", "Blue", 31000, 0, 4, toyota, BrakesType.DRLMS, TransmissionType.AUTOMATIC, hybridInline, "toyota_camryHybrid.JPG"));
-        carList.add(new Car(18, 2024, "Toyota Prius", "White", 27000, 0, 4, toyota, BrakesType.DISC, TransmissionType.AUTOMATIC, hybridInline, "toyota_prius.JPG"));
-        carList.add(new Car(19, 2024, "Toyota RAV4", "Silver", 34000, 0, 4, toyota, BrakesType.DISC, TransmissionType.AUTOMATIC, gasolineV6, "toyota_RAV4.JPG"));
-        carList.add(new Car(20, 2024, "Volvo EX30", "Blue", 55000, 0, 4, volvo, BrakesType.DISC, TransmissionType.AUTOMATIC, electricV, "volvo_EX30.JPG"));
-        carList.add(new Car(21, 2024, "Zeekr X", "Gray", 45000, 0, 4, zeekr, BrakesType.DISC, TransmissionType.AUTOMATIC, electricV, "zeekr_X.JPG"));
-
-        */
-
-        String query = "select * from car;";
-        try {
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(query);
-            while (rs.next()) {
-
-                // Consulta cada dato necesario para generar la persona, mientras aún haiga en la Base de Datos
-                // Y lo añade a la lista
-                System.out.println("Consulta: " + rs.getInt("id") + " Modelo: " + rs.getString("model"));
-                carList.add(new Car(
-                        rs.getInt("id"),
-                        rs.getInt("year"),  // Asegúrate de que coincida con la BD
-                        rs.getString("model"),
-                        rs.getString("color"),
-                        rs.getDouble("price"),
-                        rs.getInt("mileage"),
-                        rs.getInt("doors"),
-                        rs.getInt("brand_id"),
-                        rs.getInt("brakes_type_id"),
-                        rs.getInt("transmission_type_id"),
-                        rs.getInt("engine_id"),
-                        rs.getString("image")
-                ));
-
-                //carList.add(new Car(rs.getInt("id_product"), rs.getString("name"), rs.getDouble("price"), rs.getInt("category_id")));
-            }
-
-            tblCars.setItems(FXCollections.observableList(carList));
-            //welcomeText.setText("Retrieving data...");
-        } catch (SQLException e) {
-            //welcomeText.setText(e.getMessage());
-            throw new RuntimeException(e);
-        }
+        initCarsTableView();
+        initForm();
+        //btnSave.setOnAction(HandlerButton);
+        //btnReset.setOnAction(HandlerButton);
 
     }
 
     private void initCarsTableView() {
         // tblCars.setItems(FXCollections.observableList(carList)); conn properties (user)
-        /*
-        carOB = FXCollections.observableList(carDao.finAll());
+
+        carOB = FXCollections.observableList(carDao.findAll());
         tblCars.setItems(carOB);
-        tblCars.setOnMouseClicked();
-        * */
+
 
         tblCars.setOnMouseClicked(event -> {
             if (event.getClickCount() == 1) {
                 Car car = tblCars.getSelectionModel().getSelectedItem();
-                txtCarDetailId.setText(String.valueOf(car.getId()));
-                //txtCarDetailBrand.setText(Brand.valueOf(rs.getString("brakes")));
+                txtCarDetailId.setText(String.valueOf(car.getId_Car()));
+                txtCarDetailBrand.setText(car.getBrand().getName());
                 txtCarDetailModel.setText(car.getModel());
                 txtCarDetailDoors.setText(String.valueOf(car.getDoors()));
                 txtCarDetailMileage.setText(String.valueOf(car.getMileage()));
-                //txtCarDetailEngine.setText(car.getEngine().getName());
-                //txtCarDetailBreaks.setText(car.getBrakesType().toString());
-                //txtCarDetailTransmission.setText(car.getTransmissionType().name());
+                txtCarDetailEngine.setText(car.getEngine().getName());
+                txtCarDetailBreaks.setText(car.getBrakesType().toString());
+                txtCarDetailTransmission.setText(car.getTransmissionType().name());
                 txtCarDetailPrice.setText(String.valueOf(car.getPrice()));
                 txtCarDetailYear.setText(String.valueOf(car.getPrice()));
                 imgCarDetail.setImage(new Image(String.valueOf(CarsAgencyApplication.class.getResource("images/" + car.getImage().toString()))));

@@ -4,23 +4,19 @@ import com.example.carsagency.enums.BrakesType;
 import com.example.carsagency.enums.TransmissionType;
 
 public class Car {
-    private int id;
+    private int id_Car;
     private int year;
     private String model;
     private String color;
     private double price;
     private int mileage;
     private int doors;
-   /* private Brand brand;
+    /* */
+    private String image;
+    private Brand brand;
+    private Engine engine;
     private BrakesType brakesType;
     private TransmissionType transmissionType;
-    private Engine engine;*/
-    private String image;
-
-    private int brand;
-    private int brakesType;
-    private int transmissionType;
-    private int engine;
 
     public String getImage() {
         return image;
@@ -33,8 +29,8 @@ public class Car {
     public Car() {
     }
 
-    public Car(int id, int year, String model, String color, double price, int mileage, int doors, int brand, int brakesType, int transmissionType, int engine, /*Brand brand, BrakesType brakesType, TransmissionType transmissionType, Engine engine, */String image) {
-        this.id = id;
+    public Car(int id_Car, int year, String model, String color, double price, int mileage, int doors, Brand brand, BrakesType brakesType, TransmissionType transmissionType, Engine engine, /*,   */String image) {
+        this.id_Car = id_Car;
         this.year = year;
         this.model = model;
         this.color = color;
@@ -49,12 +45,12 @@ public class Car {
 
     }
 
-    public int getId() {
-        return id;
+    public int getId_Car() {
+        return id_Car;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_Car(int id_Car) {
+        this.id_Car = id_Car;
     }
 
     public int getYear() {
@@ -105,39 +101,6 @@ public class Car {
         this.doors = doors;
     }
 
-    public int getBrand() {
-        return brand;
-    }
-
-    public void setBrand(int brand) {
-        this.brand = brand;
-    }
-
-    public int getBrakesType() {
-        return brakesType;
-    }
-
-    public void setBrakesType(int brakesType) {
-        this.brakesType = brakesType;
-    }
-
-    public int getTransmissionType() {
-        return transmissionType;
-    }
-
-    public void setTransmissionType(int transmissionType) {
-        this.transmissionType = transmissionType;
-    }
-
-    public int getEngine() {
-        return engine;
-    }
-
-    public void setEngine(int engine) {
-        this.engine = engine;
-    }
-
-    /*
     public Brand getBrand() {
         return brand;
     }
@@ -169,6 +132,25 @@ public class Car {
     public void setEngine(Engine engine) {
         this.engine = engine;
     }
+
+    /*
+
+    public BrakesType getBrakesType() {
+        return brakesType;
+    }
+
+    public void setBrakesType(BrakesType brakesType) {
+        this.brakesType = brakesType;
+    }
+
+    public TransmissionType getTransmissionType() {
+        return transmissionType;
+    }
+
+    public void setTransmissionType(TransmissionType transmissionType) {
+        this.transmissionType = transmissionType;
+    }
+
 
 
      */
