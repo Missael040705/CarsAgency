@@ -27,10 +27,11 @@
             <Label text="Price" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
             <Label text="Mileage" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
             <Label text="Doors" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
-            <Label text="Brand" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
-            <Label text="Brakes" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
-            <Label text="Transmission" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
-            <Label text="Engine" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
+            <Label text="Image" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+            <Label text="Brand" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+            <Label text="Brakes" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+            <Label text="Transmission" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
+            <Label text="Engine" GridPane.columnIndex="0" GridPane.rowIndex="11"/>
 
             <TextField fx:id="tfYear" promptText="Type car's Year" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
             <TextField fx:id="tfModel" promptText="Type car's Model" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
@@ -39,14 +40,16 @@
             <TextField fx:id="tfMileage" promptText="Type car's Mileage" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
             <TextField fx:id="tfDoor" promptText="Type car's total Doors" GridPane.columnIndex="1"
                        GridPane.rowIndex="6"/>
+            <TextField fx:id="tfImage" promptText="Type car's Image name" GridPane.columnIndex="1"
+                       GridPane.rowIndex="7"/>
 
-            <ComboBox fx:id="cbBrand" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
-            <ComboBox fx:id="cbBrakes" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
-            <ComboBox fx:id="cbTransmission" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
-            <ComboBox fx:id="cbEngine" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+            <ComboBox fx:id="cbBrand" promptText="Select a Brand" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+            <ComboBox fx:id="cbBrakes" promptText="Select a Brake Type" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+            <ComboBox fx:id="cbTransmission" promptText="Select a Transmission Type" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+            <ComboBox fx:id="cbEngine" promptText="Select a Engine" GridPane.columnIndex="1" GridPane.rowIndex="11"/>
 
-            <HBox GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.columnSpan="2" spacing="10"
-                  alignment="BASELINE_RIGHT">
+            <HBox GridPane.columnIndex="0" GridPane.rowIndex="12" GridPane.columnSpan="2" spacing="10"
+                  alignment="CENTER">
                 <Button fx:id="btnReset" text="Reset"/>
                 <Button fx:id="btnSave" text="Save"/>
             </HBox>
@@ -87,6 +90,7 @@
             <Label text="TRANSMISSION: " GridPane.columnIndex="0" GridPane.rowIndex="7"/>
             <Label text="ENGINE: " GridPane.columnIndex="0" GridPane.rowIndex="8"/>
             <Label text="Year: " GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+            <Label text="Color: " GridPane.columnIndex="0" GridPane.rowIndex="10"/>
             <Text fx:id="txtCarDetailId" text="" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
             <Text fx:id="txtCarDetailBrand" text="" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
             <Text fx:id="txtCarDetailModel" text="" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
@@ -97,12 +101,13 @@
             <Text fx:id="txtCarDetailTransmission" text="" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
             <Text fx:id="txtCarDetailEngine" text="" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
             <Text fx:id="txtCarDetailYear" text="" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
-            <ImageView fx:id="imgCarDetail" GridPane.columnIndex="0" GridPane.rowIndex="10" GridPane.columnSpan="2"/>
+            <Text fx:id="txtCarDetailColor" text="" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+            <ImageView fx:id="imgCarDetail" GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.columnSpan="2"/>
 
-            <HBox GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.columnSpan="2" spacing="10"
-                  alignment="BASELINE_RIGHT">
+            <HBox GridPane.columnIndex="0" GridPane.rowIndex="12" GridPane.columnSpan="2" spacing="10"
+                  alignment="CENTER">
                 <Button fx:id="btnEdit" text="Edit"/>
-                <Button fx:id="btnDelete" text="Reset"/>
+                <Button fx:id="btnDelete" text="Delete"/>
             </HBox>
         </GridPane>
     </right>

@@ -38,6 +38,11 @@ public class Engine {
         this.shape = shape;
     }
 
+    @Override
+    public String toString() {
+        return getName();
+    }
+
 
 }
 

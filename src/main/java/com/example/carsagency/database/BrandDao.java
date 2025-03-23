@@ -19,7 +19,7 @@ public class BrandDao extends MySQLConnection implements Dao<Brand> {
     @Override
     public List<Brand> findAll() {
         List<Brand> brandList = FXCollections.observableArrayList();
-        String query = "select * from brand limit 10";
+        String query = "select * from brand limit 15";
         try {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(query);

@@ -118,7 +118,7 @@ public class CarDao extends MySQLConnection implements Dao<Car>{
 
     @Override
     public boolean update(Car car) {
-        String query = "update car set year=?, model=?, color=?, price=?, brand_id=?, mileage=?, doors=?, engine_id=?, image=?, brakes_type=?, transmission_type=? where car_id = ?";
+        String query = "update car set year=?, model=?, color=?, price=?, brand_id=?, mileage=?, doors=?, engine_id=?, image=?, brakes_type=?, transmission_type=? where id_Car = ?";
         try{
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, car.getYear());
