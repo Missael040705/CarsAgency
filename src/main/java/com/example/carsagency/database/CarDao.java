@@ -12,35 +12,42 @@ import java.sql.Statement;
 
 import com.example.carsagency.models.Engine;
 import javafx.collections.FXCollections;
+
 import java.util.List;
 import java.util.Optional;
 import java.sql.*;
 
 
-public class CarDao extends MySQLConnection implements Dao<Car>{
+public class CarDao extends MySQLConnection implements Dao<Car> {
     Connection conn = getConnection();
+
     @Override
     public Optional<Car> findById(int id) {
         return Optional.empty();
     }
+
     @Override
     public List<Car> findAll() {
         List<Car> carList = FXCollections.observableArrayList();
-        String query = "select * from car";
+        String query = "select c.*, b.name as brand_name, e.name as engine_name\n" +
+                "from car c\n" +
+                "join brand b on c.brand_id = b.id_Brand\n" +
+                "join engine e on c.engine_id = e.id_Engine\n" +
+                "order by c.id_Car;";
         try {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(query);
 
-            while (rs.next())
-            {
+            while (rs.next()) {
+                // Pasarlo directo al constructor
                 Car c = new Car();
                 c.setId_Car(rs.getInt("id_Car"));
                 c.setColor(rs.getString("color"));
                 c.setModel(rs.getString("model"));
                 c.setYear(rs.getInt("year"));
                 c.setPrice(rs.getDouble("price"));
-                c.setBrand(getBrand(rs.getInt("brand_id")));
-                c.setEngine(getEngine(rs.getInt("engine_id")));
+                c.setBrand_name(rs.getString("brand_name")); // name brand_name
+                c.setEngine_name(rs.getString("engine_name")); // engine_name
                 c.setMileage(rs.getInt("mileage"));
                 c.setDoors(rs.getInt("doors"));
                 c.setImage(rs.getString("image"));
@@ -55,11 +62,43 @@ public class CarDao extends MySQLConnection implements Dao<Car>{
         }
         return carList;
     }
+//    @Override
+//    public List<Car> findAll() {
+//        List<Car> carList = FXCollections.observableArrayList();
+//        String query = "select * from car";
+//        try {
+//            Statement statement = conn.createStatement();
+//            ResultSet rs = statement.executeQuery(query);
+//
+//            while (rs.next())
+//            {
+//                Car c = new Car();
+//                c.setId_Car(rs.getInt("id_Car"));
+//                c.setColor(rs.getString("color"));
+//                c.setModel(rs.getString("model"));
+//                c.setYear(rs.getInt("year"));
+//                c.setPrice(rs.getDouble("price"));
+//                c.setBrand(getBrand(rs.getInt("brand_id")));
+//                c.setEngine(getEngine(rs.getInt("engine_id")));
+//                c.setMileage(rs.getInt("mileage"));
+//                c.setDoors(rs.getInt("doors"));
+//                c.setImage(rs.getString("image"));
+//                c.setBrakesType(BrakesType.valueOf(rs.getString("brakes_type")));
+//                c.setTransmissionType(TransmissionType.valueOf(rs.getString("transmission_type")));
+//
+//                carList.add(c);
+//            }
+//
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//        return carList;
+//    }
 
 
     private Brand getBrand(int id_Brand) {
         String query = "select * from brand where id_Brand = " + id_Brand;
-        try{
+        try {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(query);
             rs.next();
@@ -67,7 +106,7 @@ public class CarDao extends MySQLConnection implements Dao<Car>{
             brand.setId_Brand(rs.getInt("id_Brand"));
             brand.setName(rs.getString("name"));
             return brand;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
@@ -75,7 +114,7 @@ public class CarDao extends MySQLConnection implements Dao<Car>{
 
     private Engine getEngine(int id_Engine) {
         String query = "select * from Engine where id_Engine = " + id_Engine;
-        try{
+        try {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(query);
             rs.next();
@@ -83,7 +122,7 @@ public class CarDao extends MySQLConnection implements Dao<Car>{
             Engine.setId_Engine(rs.getInt("id_Engine"));
             Engine.setName(rs.getString("name"));
             return Engine;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
@@ -94,7 +133,7 @@ public class CarDao extends MySQLConnection implements Dao<Car>{
     public boolean save(Car car) {
         String query = "insert into car (year, model, color, price, brand_id, mileage, doors, engine_id, image, brakes_type, transmission_type)" +
                 " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        try{
+        try {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, car.getYear());
             ps.setString(2, car.getModel());
@@ -110,7 +149,7 @@ public class CarDao extends MySQLConnection implements Dao<Car>{
             ps.execute();
             return true;
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
@@ -119,7 +158,7 @@ public class CarDao extends MySQLConnection implements Dao<Car>{
     @Override
     public boolean update(Car car) {
         String query = "update car set year=?, model=?, color=?, price=?, brand_id=?, mileage=?, doors=?, engine_id=?, image=?, brakes_type=?, transmission_type=? where id_Car = ?";
-        try{
+        try {
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setInt(1, car.getYear());
             ps.setString(2, car.getModel());
@@ -135,7 +174,7 @@ public class CarDao extends MySQLConnection implements Dao<Car>{
             ps.setInt(12, car.getId_Car());
             ps.execute();
             return true;
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }

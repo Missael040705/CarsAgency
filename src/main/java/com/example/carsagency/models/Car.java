@@ -18,6 +18,9 @@ public class Car {
     private BrakesType brakesType;
     private TransmissionType transmissionType;
 
+    private String brand_name;
+    private String engine_name;
+
     public String getImage() {
         return image;
     }
@@ -43,6 +46,38 @@ public class Car {
         this.engine = engine;
         this.image = image;
 
+    }
+
+    public Car(int id_Car, int year, String model, String color, double price, int mileage, int doors, String brand_name, BrakesType brakesType, TransmissionType transmissionType, String engine_name, /*,   */String image) {
+        this.id_Car = id_Car;
+        this.year = year;
+        this.model = model;
+        this.color = color;
+        this.price = price;
+        this.mileage = mileage;
+        this.doors = doors;
+        this.brand_name = brand_name;
+        this.brakesType = brakesType;
+        this.transmissionType = transmissionType;
+        this.engine_name = engine_name;
+        this.image = image;
+
+    }
+
+    public String getBrand_name() {
+        return brand_name;
+    }
+
+    public void setBrand_name(String brand_name) {
+        this.brand_name = brand_name;
+    }
+
+    public String getEngine_name() {
+        return engine_name;
+    }
+
+    public void setEngine_name(String engine_name) {
+        this.engine_name = engine_name;
     }
 
     public int getId_Car() {

@@ -105,12 +105,14 @@ public class CarsController implements Initializable {
             if (event.getClickCount() == 1) {
                 Car car = tblCars.getSelectionModel().getSelectedItem();
                 txtCarDetailId.setText(String.valueOf(car.getId_Car()));
-                txtCarDetailBrand.setText(car.getBrand().getName());
+                //txtCarDetailBrand.setText(car.getBrand().getName());
+                txtCarDetailBrand.setText(car.getBrand_name());
                 txtCarDetailModel.setText(car.getModel());
                 txtCarDetailColor.setText(car.getColor());
                 txtCarDetailDoors.setText(String.valueOf(car.getDoors()));
                 txtCarDetailMileage.setText(String.valueOf(car.getMileage()));
-                txtCarDetailEngine.setText(car.getEngine().getName());
+                //txtCarDetailEngine.setText(car.getEngine().getName());
+                txtCarDetailEngine.setText(car.getEngine_name());
                 txtCarDetailBreaks.setText(car.getBrakesType().toString());
                 txtCarDetailTransmission.setText(car.getTransmissionType().name());
                 txtCarDetailPrice.setText(String.valueOf(car.getPrice()));
